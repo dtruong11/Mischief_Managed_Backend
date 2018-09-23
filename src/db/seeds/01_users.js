@@ -2,7 +2,7 @@ const {
   hashSync
 } = require('bcryptjs')
 
-const table = 'volunteers'
+const table = 'users'
 exports.seed = knex => {
   return knex(table).insert([{
     id: 1,

@@ -4,14 +4,26 @@ exports.seed = knex => {
     .then(() => {
       return knex(table).insert([{
             user_id: 1,
-            event_id: 1
+            event_id: 1,
+            favorite: true,
+            registered: true 
           }, {
             user_id: 1,
-            event_id: 2
+            event_id: 2,
+            favorite: true,
+            registered: false
           },
           {
             user_id: 2,
-            event_id: 3
+            event_id: 3,
+            favorite: true,
+            registered: true 
+          },
+          {
+            user_id: 2,
+            event_id: 4,
+            favorite: false,
+            registered: true  
           }
         ])
         .then(() => {

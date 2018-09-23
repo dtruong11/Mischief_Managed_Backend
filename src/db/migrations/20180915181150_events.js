@@ -4,7 +4,7 @@ exports.up = knex => {
     table.increments()
     table.string('title').notNullable()
     table.text('description').notNullable()
-    table.string('imgage_url').notNullable().defaultsTo('https://cdn.dribbble.com/users/729829/screenshots/3011370/galshir-meshi.gif')
+    table.string('image_url').notNullable().defaultsTo('https://cdn.dribbble.com/users/729829/screenshots/3011370/galshir-meshi.gif')
     table.integer('cost').notNullable().defaultsTo(0)
     table.integer('min_age').notNullable().defaultsTo(0)
     table.integer('max_age').notNullable()

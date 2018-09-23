@@ -29,7 +29,7 @@ exports.seed = knex => {
     state: 'WA',
     zip: '98004',
     lat: 47.615779,
-    lonng: -122.203725
+    long: -122.203725
   }, {
     id: 3,
     name: 'Wiggle Works Kids',
@@ -41,8 +41,21 @@ exports.seed = knex => {
     city: 'Bellevue',
     state: 'WA',
     zip: '98008',
-    lat: 47.618666, 
+    lat: 47.618666,
     long: -122.130378
+  }, {
+    id: 4,
+    name: 'Kid\'s Quest',
+    description: "KidsQuest Children's Museum is a hands-on, interactive children’s museum that encourages learning through play with an emphasis on science, technology, engineering, art and math. Exhibits and programs are geared towards children 0-10 and their families.",
+    email: "kids@quest.com",
+    password: hashSync('password'),
+    logo: 'https://goo.gl/i3i7zn',
+    street: '1116 108th Ave NE',
+    city: 'Bellevue',
+    state: 'WA',
+    zip: '98004',
+    lat: 47.621638, 
+    long: -122.195874
   }]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
   });

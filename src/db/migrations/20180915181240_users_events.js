@@ -1,19 +1,16 @@
-const table = 'accounts'
+const table = 'users_events'
 exports.up = knex => {
   return knex.schema.createTable(table, table => {
     table.increments()
-    table.string('email').notNullable().unique()
-    table.text('password').notNullable()
-    table.integer('org_id').notNullable().defaultsTo(0)
-    table.foreign('org_id').references('organizations.id').onDelete('CASCADE')
     table.integer('user_id').notNullable().defaultsTo(0)
+    table.integer('event_id').notNullable().defaultsTo(0)
     table.foreign('user_id').references('users.id').onDelete('CASCADE')
-    table.timestamps(true, true)
+    table.foreign('event_id').references('events.id').onDelete('CASCADE')
+    table.boolean('favorite').notNullable().defaultsTo(false)
+    table.boolean('registered').notNullable().defaultsTo(false)
   })
 };
 
 exports.down = knex => {
   return knex.schema.dropTable(table)
 };
-
-

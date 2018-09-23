@@ -72,6 +72,30 @@ exports.seed = knex => {
     end_date: '2018-09-20T16:00:00-07:00',
     cancelled_at: null,
     org_id: 3
+  }, {
+    id: 4,
+    title: 'Ginger Bread Man & Santa Clause house',
+    description: "We will be making our own ginger bread man and building a house for Santa.",
+    image_url: 'https://i0.wp.com/lahabrajournal.com/wp-content/uploads/2013/12/gingerbread-man.jpg',
+    cost: 5,
+    min_age: 2,
+    max_age: 5,
+    street: '1116 108th Ave NE',
+    city: 'Bellevue',
+    state: 'WA',
+    zip: '98004',
+    lat: 47.621638, 
+    long: -122.195874,
+    sport: false,
+    art: true,
+    educational: false,
+    nature: false,
+    music: false,
+    cooking: false,
+    start_date: '2018-09-20T14:00:00-07:00',
+    end_date: '2018-09-20T16:00:00-07:00',
+    cancelled_at: null,
+    org_id: 4
   }]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
   });

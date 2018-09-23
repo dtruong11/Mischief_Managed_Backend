@@ -4,6 +4,8 @@ exports.up = knex => {
     table.increments()
     table.string('first_name').notNullable()
     table.string('last_name').notNullable().defaultsTo('')
+    table.string('email').notNullable()
+    table.text('password').notNullable()
     table.string('city').notNullable()
     table.string('state').notNullable()
     table.integer('zip').notNullable().defaultsTo(0)
