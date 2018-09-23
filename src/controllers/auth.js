@@ -37,13 +37,12 @@ async function loginUser(req, res, next) {
 
 async function loginOrg(req, res, next) {
     try {
-        console.log("function loginOrg inside controller")
         let tableName = 'organizations'
         const response = await model.login(req.body, tableName)
         console.log("I am response", response)
-        const { id, name, description, email, logo, street, city, state, zip, lat, long } = response
+        const { id, name, aboutus, email, logo, street_org, city_org, state_org, zip_org, lat_org, long_org } = response
         const token = auth.createToken(response.id)
-        res.json({ token, id, name, description, email, logo, street, city, state, zip })
+        res.json({ token, id, name, aboutus, email, logo, street_org, city_org, state_org, zip_org, lat_org, long_org})
     } catch (e) {
         next({ status: 401, error: `Email or password is incorrect` })
     }

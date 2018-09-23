@@ -60,7 +60,7 @@ async function signupUser({ first_name, last_name, email, password, city, state,
     }
 }
 
-async function signupOrg({ email, password, name, description, street, city, state, zip, logo, lat, long }) {
+async function signupOrg({ email, password, name, aboutus, street_org, city_org, state_org, zip_org, logo, lat_org, long_org }) {
     console.log("function signupOrg started")
     const acctExist = await checkEmail(email)
     console.log("I am acctExist from checkEmail(email)", acctExist)
@@ -69,16 +69,16 @@ async function signupOrg({ email, password, name, description, street, city, sta
         console.log("if block in signupOrg.")
         const org = {
             name,
-            description,
+            aboutus,
             email,
             password: hashed,
-            street,
-            city,
-            state,
-            zip: parseInt(zip),
+            street_org,
+            city_org,
+            state_org,
+            zip_org: parseInt(zip_org),
             logo,
-            lat,
-            long
+            lat_org,
+            long_org
         }
 
         return db('organizations')

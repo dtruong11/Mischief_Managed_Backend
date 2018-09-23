@@ -22,7 +22,6 @@ const joinTbs = (tableName) => {
         .join('organizations', 'organizations.id', '=', 'events.org_id')
 }
 
-// 
 
 /////////////////////////////
 // events registration 
