@@ -5,11 +5,15 @@ const resourceName = 'event'
 
 const getAll = async (req, res, next) => {
     try {
-        console.log("model.getAll()", model.getAll())
-        const response = await model.getAll()
-        res.json({
-            [plural(resourceName)]: response
-        })
+        if (req.query.lat) {
+            console.log(req.query)
+            
+        } else {
+            const response = await model.getAll()
+            res.json({
+                [plural(resourceName)]: response
+            })
+        }
     } catch (e) {
         console.log(e)
         next({
@@ -34,7 +38,24 @@ const getOne = async (req, res, next) => {
     }
 }
 
+
+const getEventsByLocation = async(req, res, next) => {
+    try {
+        const response = await model.getEventsByLocation(req.query.lat, req.query.long)
+        res.json({
+            [plural(resourceName)]: response
+        })
+    } catch (e) {
+        console.log(e)
+        next({
+            status: 404,
+            error: 'Could not retrieve a single event'
+        })
+    }
+}
+
 module.exports = {
     getAll,
-    getOne
+    getOne,
+    getEventsByLocation
 }

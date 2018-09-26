@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 const {
-    PORT = 3000, NODE_ENV = 'development'
+    PORT = 5000, NODE_ENV = 'development'
 } = process.env
 
 if (NODE_ENV === 'development') {
@@ -21,10 +21,7 @@ app.use('/featured', require('./src/routes/featured'))
 app.use('/users', require('./src/routes/users'))
 app.use('/:userId/events', require('./src/routes/events_user'))
 app.use('/events', require('./src/routes/events'))
-// app.use('/api/volunteers', require('./src/routes/volunteers'))
-// app.use('/api/organizations', require('./src/routes/organizations'))
-// app.use('/api/organizations/:orgId/events', require('./src/routes/events_org.js'))
-// app.use('/api/volunteers/:volId/events', require('./src/routes/events_vol.js'))
+
 
 app.use((err, req, res, next) => {
     if (NODE_ENV === 'development') console.error(err)
