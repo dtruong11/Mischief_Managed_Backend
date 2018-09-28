@@ -6,8 +6,10 @@ const resourceName = 'event'
 const getAll = async (req, res, next) => {
     try {
         if (req.query.lat) {
-            console.log(req.query)
-            
+            const response = await model.getFiltered(req.query)
+            res.json({
+                [plural(resourceName)]: response
+            })
         } else {
             const response = await model.getAll()
             res.json({
@@ -39,7 +41,7 @@ const getOne = async (req, res, next) => {
 }
 
 
-const getEventsByLocation = async(req, res, next) => {
+const getEventsByLocation = async (req, res, next) => {
     try {
         const response = await model.getEventsByLocation(req.query.lat, req.query.long)
         res.json({
