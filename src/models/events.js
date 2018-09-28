@@ -1,5 +1,7 @@
 const db = require('../db/knex')
 const tableName = 'events'
+var moment = require('moment');
+
 
 const joinTbs = () => {
     return db(tableName)
@@ -7,8 +9,8 @@ const joinTbs = () => {
 }
 const getAll = () => {
     return joinTbs()
-    .returning('*')
-    .then(res => res)
+        .returning('*')
+        .then(res => res)
 }
 
 const getOne = (eventId) => {
@@ -32,6 +34,9 @@ const getFiltered = (query) => {
     delete input.cost
     delete input.min_age
     delete input.max_age
+    if (input.morning) delete input.morning 
+    if (input.afternoon) delete input.afternoon
+    if (input.evening) delete input.evening
 
     for (key in input) {
         allEvents = allEvents.andWhere(key, true)
@@ -47,6 +52,9 @@ const getFiltered = (query) => {
 
     console.log(allEvents.toString())
     // step 4: filter by morning, afternoon, evening 
+    console.log('moment', moment('2018-09-16T15:00:00-07:00').format("YYYY-MM-DD HH:mm:ss a"))
+    console.log('moment', moment('2018-09-16T15:00:00-07:00').format("HH"))
+
 
     // step 5: filter based on location 
     const nearbyEvents = allEvents.returning('*').then(events => {
@@ -57,13 +65,37 @@ const getFiltered = (query) => {
         //     if (distance < 20) return true
         // })
 
-        return events
+        console.log('query in nearby', query)
+        if (query.morning || query.afternoon || query.evening) {
+            return events.filter(event => {
+                console.log('event.start_date',event.start_date)
+                let arr = [getAMPM(event.start_date), getAMPM(event.end_date)]
+                console.log('arr of AMPM', arr)
+                if (arr.includes('morning') || arr.includes('afternoon') || arr.includes('everning')) {
+                    return true
+                }
+            })
+        } else {
+            return events
+        }
     })
 
-
-
     return nearbyEvents
+}
 
+const getAMPM = (str) => {
+    console.log('str inside getAMPM', str)
+    let split_afternoon = 12
+    let split_evening = 17
+    let hour = moment(str).format("HH")
+
+    if (hour > split_afternoon && hour <= split_evening) {
+        return 'afternoon'
+    } else if (hour >= split_evening) {
+        return 'evening'
+    } else {
+        return 'morning'
+    }
 }
 
 const getDistance = (a, b) => {

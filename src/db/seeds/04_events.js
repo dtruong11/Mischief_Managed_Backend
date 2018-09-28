@@ -25,7 +25,7 @@ exports.seed = knex => {
     org_id: 1
   }, {
     id: 2,
-    title: 'Music & Friends',
+    title: 'The Hungry Catepillar',
     description: "We will read many fun books.",
     image_url: 'http://funlittleohana.com/wp-content/uploads/2016/02/Hawaii-Public-Library-storytime.jpg',
     cost: 0,
