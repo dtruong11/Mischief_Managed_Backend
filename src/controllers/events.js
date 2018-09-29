@@ -7,6 +7,7 @@ const getAll = async (req, res, next) => {
     try {
         if (req.query.lat) {
             const response = await model.getFiltered(req.query)
+            console.log('GET ALLLLL')
             res.json({
                 [plural(resourceName)]: response
             })
