@@ -13,9 +13,11 @@ const getAll = () => {
         .then(res => res)
 }
 
-const getOne = (eventId) => {
+const getOne = (eventTitle) => {
+    console.log(eventTitle)
+    let fixedTitle = eventTitle.split('-').join(' ')
     return joinTbs()
-        .where({ id: eventId })
+        .where({ title: fixedTitle })
         .first()
 }
 
