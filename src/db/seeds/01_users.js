@@ -24,7 +24,48 @@ exports.seed = knex => {
     state: "Washington",
     zip: 98004,
     avatar: 'https://goo.gl/FTZkYy'
-  }]).then(() => {
+  }, {
+    id: 3,
+    first_name: 'Ashley',
+    last_name: 'Holmes',
+    email: 'ashley@gmail.com',
+    password: hashSync('password'),
+    city: 'Kirland',
+    state: "Washington",
+    zip: 98033,
+    avatar: 'https://goo.gl/YkPmzA'
+  }, {
+    id: 4,
+    first_name: 'Michael',
+    last_name: 'Labranche',
+    email: 'michael@gmail.com',
+    password: hashSync('password'),
+    city: 'Redmond',
+    state: "Washington",
+    zip: 98008,
+    avatar: 'https://goo.gl/8rUWrD'
+  }, {
+    id: 5,
+    first_name: 'Guillaume',
+    last_name: 'Kay',
+    email: 'gkay@gmail.com',
+    password: hashSync('password'),
+    city: 'Issaquah',
+    state: "Washington",
+    zip: 98027,
+    avatar: 'https://goo.gl/AciskH'
+  }, {
+    id: 5,
+    first_name: 'Asim',
+    last_name: 'Fahan',
+    email: 'asim@gmail.com',
+    password: hashSync('password'),
+    city: 'Auburn',
+    state: "Washington",
+    zip: 98002,
+    avatar: 'https://goo.gl/AciskH'
+  }
+  ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
   });
 };
