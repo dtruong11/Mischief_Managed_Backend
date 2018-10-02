@@ -21,7 +21,7 @@ app.use('/featured', require('./src/routes/featured'))
 app.use('/users', require('./src/routes/users'))
 app.use('/:userId/events', require('./src/routes/events_user'))
 app.use('/events', require('./src/routes/events'))
-
+app.use('/events/:eventId/reviews', require('./src/routes/reviews'))
 
 app.use((err, req, res, next) => {
     if (NODE_ENV === 'development') console.error(err)

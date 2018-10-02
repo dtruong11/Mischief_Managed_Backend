@@ -55,7 +55,7 @@ exports.seed = knex => {
     zip: 98027,
     avatar: 'https://goo.gl/AciskH'
   }, {
-    id: 5,
+    id: 6,
     first_name: 'Asim',
     last_name: 'Fahan',
     email: 'asim@gmail.com',

@@ -132,8 +132,8 @@ async function isAuthorizedUser(req, res, next) {
 
         // const userId = req.params.userId 
         console.log("I am the userId", userId)
-        const volunteer = await db('users').where({ id: userId }).first()
-        if (!volunteer) {
+        const user = await db('users').where({ id: userId }).first()
+        if (!user) {
             const message = `You are not authorized to update this list`
             return next({
                 status: 401,
@@ -143,7 +143,7 @@ async function isAuthorizedUser(req, res, next) {
         next()
     } catch (e) {
         console.log(e)
-        next({ status: 401, error: `Session has expired. Volunteer, please log in again.` })
+        next({ status: 401, error: `Session has expired. User, please log in again.` })
 
     }
 }
