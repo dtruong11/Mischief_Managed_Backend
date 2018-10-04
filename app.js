@@ -22,7 +22,8 @@ app.use('/users', require('./src/routes/users'))
 // app.use('/:userId/events', require('./src/routes/events_user'))
 app.use('/events', require('./src/routes/events'))
 app.use('/events/:eventId/reviews', require('./src/routes/reviews'))
-// app.use('/registration', require('./src/routes/events_user'))
+app.use('/registration', require('./src/routes/events_user'))
+
 // app.use('/favorites', require('./src/routes/favorites')) // work on this
 
 app.use((err, req, res, next) => {
