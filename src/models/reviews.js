@@ -1,13 +1,23 @@
 const db = require('../db/knex')
 const tableName = 'reviews'
+const modelUser = require('./users')
 const getAll = (eventId) => {
   return db(tableName)
+    .select('reviews.id AS review_id', '*')
     .join('users', 'users.id', '=', 'reviews.user_id')
     .where({ event_id: eventId })
-    .returning('*')
-    .then(res => res)
+    .then(res => {
+      // console.log(res)
+      let result = []
+      console.log('THIS IS res', res)
+      res.map(el => {
+        const { review_id, user_id, event_id, content, votes, created_at, updated_at, first_name, last_name, city, state, avatar } = el
+        const obj = { review_id, user_id, event_id, content, votes, created_at, updated_at, first_name, last_name, city, state, avatar }
+        result.push(obj)
+      })
+      return result
+    })
 }
-
 
 const getOne = (eventId, reviewId) => {
   return db(tableName)
@@ -25,13 +35,17 @@ const postReview = (eventId, user_id, { content, votes }) => {
     content,
     votes
   }
+
   return db(tableName)
     .insert(bodyInsert)
-    .returning('*')
-    .then(([res]) => res)
-
-
-
+    .join('users', 'users.id', '=', 'reviews.user_id')
+    .returning(['id AS review_id', ' user_id', 'event_id', 'content', 'votes', 'created_at', 'updated_at'])
+    .then(async ([res]) => {
+      const user = await modelUser.getOne(res.user_id)
+      const { first_name, last_name, city, state, avatar } = user[0]
+      let result = { ...res, first_name, last_name, city, state, avatar }
+      return result
+    })
 }
 
 module.exports = {

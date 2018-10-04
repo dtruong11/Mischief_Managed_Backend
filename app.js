@@ -19,9 +19,11 @@ app.use(cors())
 app.use('/auth', require('./src/routes/auth'))
 app.use('/featured', require('./src/routes/featured'))
 app.use('/users', require('./src/routes/users'))
-app.use('/:userId/events', require('./src/routes/events_user'))
+// app.use('/:userId/events', require('./src/routes/events_user'))
 app.use('/events', require('./src/routes/events'))
 app.use('/events/:eventId/reviews', require('./src/routes/reviews'))
+// app.use('/registration', require('./src/routes/events_user'))
+// app.use('/favorites', require('./src/routes/favorites')) // work on this
 
 app.use((err, req, res, next) => {
     if (NODE_ENV === 'development') console.error(err)
@@ -29,7 +31,6 @@ app.use((err, req, res, next) => {
     const {
         status = 500, error = message
     } = err
-
     res.status(status).json({
         status,
         error

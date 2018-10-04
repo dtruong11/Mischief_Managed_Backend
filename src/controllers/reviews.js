@@ -1,7 +1,7 @@
-const model = require('../models/reviews')
 const {
     parseToken
 } = require('../lib/auth')
+const model = require('../models/reviews')
 
 const getAllReviews = async (req, res, next) => {
     try {

@@ -20,7 +20,6 @@ exports.seed = knex => {
         votes: 4
       },
       {
-
         user_id: 4,
         event_id: 4,
         content: "Toddlers heaven. This place is fantastic for little ones (18 months - 5 YO) For babies under 1 YO is free, but I'd say there're not many activities for them. If you're a member ($95/year) you can have access to special hours which let you enjoy more this place without the crowds. Having said that, the staff is always kind and patient with children. They keep clean enough and organize the museum. Usually the museum gets busy when's cold and rainy outside,  but their activities during the summer are also amazing. Remember to bring your own snacks since there's no cafeteria. Also bring extra dry clothes for your kids since they might get wet.",
