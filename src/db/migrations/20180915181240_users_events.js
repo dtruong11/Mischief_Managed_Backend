@@ -8,8 +8,9 @@ exports.up = knex => {
     table.foreign('event_id').references('events.id').onDelete('CASCADE')
     table.boolean('favorite').notNullable().defaultsTo(false)
     table.boolean('registered').notNullable().defaultsTo(false)
-  })
-};
+    table.text('notes').notNullable().defaultsTo('')
+  });
+}
 
 exports.down = knex => {
   return knex.schema.dropTable(table)

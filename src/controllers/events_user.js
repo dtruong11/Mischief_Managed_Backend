@@ -3,6 +3,9 @@ const model = require('../models/events_user')
 // const { parseToken } = require('../lib/auth')
 
 const resourceName = 'event'
+const {
+    parseToken
+} = require('../lib/auth')
 
 /////////////////////////////
 // events registration 
@@ -48,7 +51,12 @@ const getOneRegisteredEvent = async (req, res, next) => {
 // create: signup for an event
 const registerEvent = async (req, res, next) => {
     try {
-        const response = await model.registerEvent(req.params.userId, req.body.event_id)
+        const token = parseToken(req.headers.authorization)
+        const user_id = token.sub.id
+
+        const response = await model.registerEvent(user_id, req.params.eventId, req.body)
+        console.log(response)
+        
         res.status(200).json({
             [resourceName]: response
         })

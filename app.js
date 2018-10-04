@@ -19,10 +19,9 @@ app.use(cors())
 app.use('/auth', require('./src/routes/auth'))
 app.use('/featured', require('./src/routes/featured'))
 app.use('/users', require('./src/routes/users'))
-// app.use('/:userId/events', require('./src/routes/events_user'))
 app.use('/events', require('./src/routes/events'))
 app.use('/events/:eventId/reviews', require('./src/routes/reviews'))
-app.use('/registration', require('./src/routes/events_user'))
+app.use('/registration', require('./src/routes/events_user')) // get the user id from the token 
 
 // app.use('/favorites', require('./src/routes/favorites')) // work on this
 
