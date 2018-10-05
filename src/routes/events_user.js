@@ -10,7 +10,7 @@ router.get('/', auth.isLoggedIn, auth.isAuthorizedUser, ctrl.getRegisteredEvents
 router.get('/:eventId', ctrl.getOneRegisteredEvent)
 
 // users can register for events
-router.post('/:eventId', auth.isLoggedIn, auth.isAuthorizedUser, ctrl.registerEvent) // eventId in request body 
+router.post('/:eventId', auth.isLoggedIn, auth.isAuthorizedUser, ctrl.registerEvent) 
 router.delete('/:eventId', ctrl.unLikeEvent)
 
 module.exports = router

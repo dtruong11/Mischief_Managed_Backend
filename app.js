@@ -22,6 +22,7 @@ app.use('/users', require('./src/routes/users'))
 app.use('/events', require('./src/routes/events'))
 app.use('/events/:eventId/reviews', require('./src/routes/reviews'))
 app.use('/registration', require('./src/routes/events_user')) // get the user id from the token 
+app.use('/checkRegistered', require('./src/routes/checkRegistered'))
 
 // app.use('/favorites', require('./src/routes/favorites')) // work on this
 
