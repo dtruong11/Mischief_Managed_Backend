@@ -5,14 +5,14 @@ const {
 const db = require('../db/knex')
 
 const getAll = () => {
-    return db('users')
+    return db('organizations')
         .returning('*')
         .then((response) => response)
 }
 
-const getOne = (userId) => {
-    return db('users')
-        .where('id', userId)
+const getOne = (orgId) => {
+    return db('organizations')
+        .where('id', orgId)
         .then(response => response)
 }
 
