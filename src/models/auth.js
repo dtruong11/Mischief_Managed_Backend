@@ -77,8 +77,8 @@ async function signupOrg({ email, password, name, aboutus, street_org, city_org,
             state_org,
             zip_org: parseInt(zip_org),
             logo,
-            lat_org,
-            long_org
+            lat_org: parseFloat(lat_org),
+            long_org: parseFloat(long_org)
         }
 
         return db('organizations')

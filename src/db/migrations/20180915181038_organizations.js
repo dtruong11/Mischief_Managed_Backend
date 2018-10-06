@@ -11,8 +11,8 @@ exports.up = knex => {
         table.string('city_org')
         table.string('state_org')
         table.string('zip_org')
-        table.string('lat_org')
-        table.string('long_org')
+        table.float('lat_org')
+        table.float('long_org')
         table.timestamps(true, true)
     })
 };
