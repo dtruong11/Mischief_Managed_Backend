@@ -19,7 +19,6 @@ exports.up = knex => {
     table.boolean('educational').notNullable().defaultsTo(false)
     table.boolean('nature').notNullable().defaultsTo(false)
     table.boolean('music').notNullable().defaultsTo(false)
-    table.boolean('cooking').notNullable().defaultsTo(false)
     table.dateTime('start_date').notNullable();
     table.dateTime('end_date').notNullable();
     table.dateTime('cancelled_at').defaultTo(null);

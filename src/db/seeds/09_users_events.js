@@ -20,10 +20,10 @@ exports.seed = knex => {
           {
             id: 3,
             user_id: 2,
-            event_id: 3,
+            event_id: 1,
             favorite: true,
-            registered: false,
-            notes: ''
+            registered: true,
+            notes: 'We are so excited about this event.'
           },
           {
             id: 4,

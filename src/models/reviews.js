@@ -1,6 +1,7 @@
 const db = require('../db/knex')
 const tableName = 'reviews'
 const modelUser = require('./users')
+
 const getAll = (eventId) => {
   return db(tableName)
     .select('reviews.id AS review_id', '*')
@@ -9,7 +10,6 @@ const getAll = (eventId) => {
     .then(res => {
       // console.log(res)
       let result = []
-      console.log('THIS IS res', res)
       res.map(el => {
         const { review_id, user_id, event_id, content, votes, created_at, updated_at, first_name, last_name, city, state, avatar } = el
         const obj = { review_id, user_id, event_id, content, votes, created_at, updated_at, first_name, last_name, city, state, avatar }
