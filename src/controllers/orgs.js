@@ -43,7 +43,6 @@ const createEvent = async (req, res, next) => {
     } catch (e) {
         console.error(e)
         next({ status: 400, err: `Event could not be created` })
-
     }
 }
 
