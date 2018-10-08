@@ -14,7 +14,7 @@ function createToken(id) {
         }
     }
     const options = {
-        expiresIn: '10 days'
+        expiresIn: '60 days'
     }
 
     return sign(sub, SECRET_KEY, options)
@@ -29,9 +29,11 @@ function parseToken(header) {
 function isLoggedIn(req, res, next) {
     try {
         parseToken(req.headers.authorization)
+        console.log('parsed token', parseToken(req.headers.authorization)
+        )
         next()
-
     } catch (e) {
+        console.error(e)
         next({
             status: 401,
             error: `Session has expired. Please login again.`

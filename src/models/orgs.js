@@ -21,6 +21,7 @@ const getOne = (orgId) => {
 
 /// GET EVENTS POSTED BY ORG, WITH INFO ABOUT REGISTERED PARENTS, ATTENDING CHILDREN
 const getEventsByOrg = (orgId) => {
+    console.log('backend orgId, getEventsByOrg', orgId)
     return db(tableName)
         .select('events.id AS event_id', '*')
         .join('events', 'events.org_id', '=', 'organizations.id')
@@ -38,6 +39,9 @@ const getEventsByOrg = (orgId) => {
 const createEvent = (body) => {
     const bodyInsert = {
         ...body,
+        cost: parseInt(body.cost),
+        min_age: parseInt(body.min_age),
+        max_age: parseInt(body.max_age),
         lat: parseFloat(body.lat),
         long: parseFloat(body.long),
         org_id: parseInt(body.org_id),
