@@ -35,7 +35,7 @@ const getEventsByOrg = (orgId) => {
         })
 }
 
-const createEvent = (body) => {
+const createEvent = (body, orgId) => {
     const bodyInsert = {
         ...body,
         cost: parseInt(body.cost),
@@ -43,7 +43,7 @@ const createEvent = (body) => {
         max_age: parseInt(body.max_age),
         lat: parseFloat(body.lat),
         long: parseFloat(body.long),
-        org_id: parseInt(body.org_id),
+        org_id: parseInt(orgId),
         cancelled_at: null
     }
 

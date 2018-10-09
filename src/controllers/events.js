@@ -27,7 +27,7 @@ const getAll = async (req, res, next) => {
 
 const getOne = async (req, res, next) => {
     try {
-        const response = await model.getOne(req.params.eventTitle)
+        const response = await model.getOne(req.params.eventId)
         res.json({
             [resourceName]: response
         })

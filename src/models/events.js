@@ -4,29 +4,45 @@ var moment = require('moment');
 const modelReview = require('./reviews')
 const joinTbs = () => {
   return db(tableName)
+    .select('events.id AS event_id', '*')
     .join('organizations', 'organizations.id', '=', 'events.org_id')
 }
+
 const getAll = () => {
   return joinTbs()
-    .returning('*')
-    .then(res => res)
+  // .then(res => res)
 }
 
-const getOne = (eventTitle) => {
-  let fixedTitle = eventTitle.split('-').join(' ')
+// const getOne = (eventTitle) => {
+//   let fixedTitle = eventTitle.split('-').join(' ')
+//   return joinTbs()
+//     .where({ title: fixedTitle })
+//     .first()
+//     .then(async (event) => {
+//       try {
+//         const reviews = await modelReview.getAll(event.id)
+//         event.reviews = reviews
+//         return event
+//       } catch (e) {
+//         console.error(e)
+//       }
+//     }
+//     )
+// }
+
+const getOne = (eventId) => {
   return joinTbs()
-    .where({ title: fixedTitle })
+    .where('events.id', eventId )
     .first()
     .then(async (event) => {
       try {
-        const reviews = await modelReview.getAll(event.id)
+        const reviews = await modelReview.getAll(event.event_id)
         event.reviews = reviews
         return event
       } catch (e) {
         console.error(e)
       }
-    }
-    )
+    })
 }
 
 const getFiltered = async (query) => {

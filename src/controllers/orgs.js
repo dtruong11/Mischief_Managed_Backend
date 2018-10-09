@@ -42,7 +42,11 @@ const getEventsByOrg = async (req, res, next) => {
 
 const createEvent = async (req, res, next) => {
     try {
-        let data = await model.createEvent(req.body)
+        console.log(req.body)
+        const token = parseToken(req.headers.authorization)
+        
+        const orgId = token.sub.id
+        let data = await model.createEvent(req.body, orgId)
         res.send({
             data
         })
