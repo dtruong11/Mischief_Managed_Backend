@@ -15,13 +15,12 @@ const {
 // get all 
 const getRegisteredEvents = async (req, res, next) => {
     try {
-        console.log("req.params", req.params)
         const response = await model.getRegisteredEvents(req.params.userId)
         res.json({
             [plural(resourceName)]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve registered events'
@@ -38,7 +37,7 @@ const getOneRegisteredEvent = async (req, res, next) => {
             [resourceName]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve a single registered event'
@@ -55,13 +54,12 @@ const registerEvent = async (req, res, next) => {
         const user_id = token.sub.id
 
         const response = await model.registerEvent(user_id, req.params.eventId, req.body)
-        console.log(response)
         
         res.status(200).json({
             [resourceName]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Event could not be created`
@@ -77,7 +75,7 @@ const unLikeEvent = async (req, res, next) => {
             [resourceName]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Event could not be deleted`
@@ -103,7 +101,7 @@ const getFavorites = async (req, res, next) => {
             [plural(resourceName)]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve favorite events'
@@ -119,7 +117,7 @@ const favEvent = async (req, res, next) => {
             [resourceName]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: 'Could not create a favorite event'

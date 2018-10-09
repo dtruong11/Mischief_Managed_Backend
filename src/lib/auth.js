@@ -16,7 +16,6 @@ function createToken(id) {
     const options = {
         expiresIn: '60 days'
     }
-
     return sign(sub, SECRET_KEY, options)
 }
 // all tokens are signed with a unique id. 
@@ -29,8 +28,6 @@ function parseToken(header) {
 function isLoggedIn(req, res, next) {
     try {
         parseToken(req.headers.authorization)
-        console.log('parsed token', parseToken(req.headers.authorization)
-        )
         next()
     } catch (e) {
         console.error(e)
@@ -54,7 +51,6 @@ async function isAuthorizedOrg(req, res, next) {
 
         const token = parseToken(authorization)
         const orgId = token.sub.id
-        console.log("I am orgId", orgId)
 
         const org = await db('organizations')
             .where({
@@ -133,7 +129,6 @@ async function isAuthorizedUser(req, res, next) {
         const userId = token.sub.id
 
         // const userId = req.params.userId 
-        console.log("I am the userId", userId)
         const user = await db('users').where({ id: userId }).first()
         if (!user) {
             const message = `You are not authorized to update this list`
@@ -149,7 +144,6 @@ async function isAuthorizedUser(req, res, next) {
 
     }
 }
-
 
 
 module.exports = {

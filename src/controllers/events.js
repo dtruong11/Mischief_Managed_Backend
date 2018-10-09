@@ -7,7 +7,6 @@ const getAll = async (req, res, next) => {
     try {
         if (req.query.lat) {
             const response = await model.getFiltered(req.query)
-            console.log('GET ALLLLL')
             res.json({
                 [plural(resourceName)]: response
             })
@@ -18,7 +17,7 @@ const getAll = async (req, res, next) => {
             })
         }
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve all events'
@@ -33,7 +32,7 @@ const getOne = async (req, res, next) => {
             [resourceName]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve a single event'
@@ -49,7 +48,7 @@ const getEventsByLocation = async (req, res, next) => {
             [plural(resourceName)]: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 404,
             error: 'Could not retrieve a single event'

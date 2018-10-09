@@ -26,6 +26,7 @@ const getOneOrg = async (req, res, next) => {
 const getEventsByOrg = async (req, res, next) => {
     try {
         const token = parseToken(req.headers.authorization)
+        
         const orgID = token.sub.id
 
         console.log('this token from front-end', token)

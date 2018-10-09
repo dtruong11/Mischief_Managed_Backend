@@ -16,7 +16,6 @@ const getAllReviews = async (req, res, next) => {
 const getOneReview = async (req, res, next) => {
     try {
         let data = await model.getOne(req.params.eventId, req.params.reviewId)
-        console.log('req.params.reviewId', req.params.reviewId)
         res.send({
             data
         })
@@ -30,8 +29,6 @@ const postReview = async (req, res, next) => {
     try {
         const token = parseToken(req.headers.authorization)
         const user_id = token.sub.id
-        console.log('this is user_id', user_id)
-        console.log('req.params', req.params)
 
         let response = await model.postReview(parseInt(req.params.eventId), user_id, req.body)
         res.status(201).json({ ...response })

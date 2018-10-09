@@ -6,7 +6,6 @@ const checkRegistered = async (user_id, event_id) => {
         event_id,
         registered: true
     }).first()
-    console.log('this is registeredEvent',registeredEvent)
     if (registeredEvent) {
         return true
     }

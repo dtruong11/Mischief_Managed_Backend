@@ -8,7 +8,6 @@ const getAll = (eventId) => {
     .join('users', 'users.id', '=', 'reviews.user_id')
     .where({ event_id: eventId })
     .then(res => {
-      // console.log(res)
       let result = []
       res.map(el => {
         const { review_id, user_id, event_id, content, votes, created_at, updated_at, first_name, last_name, city, state, avatar } = el
@@ -28,7 +27,6 @@ const getOne = (eventId, reviewId) => {
 }
 
 const postReview = (eventId, user_id, { content, votes }) => {
-  console.log('this is eventId', eventId, typeof (eventId))
   const bodyInsert = {
     user_id,
     event_id: eventId,

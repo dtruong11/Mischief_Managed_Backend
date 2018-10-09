@@ -21,7 +21,6 @@ const getOne = (orgId) => {
 
 /// GET EVENTS POSTED BY ORG, WITH INFO ABOUT REGISTERED PARENTS, ATTENDING CHILDREN
 const getEventsByOrg = (orgId) => {
-    console.log('backend orgId, getEventsByOrg', orgId)
     return db(tableName)
         .select('events.id AS event_id', '*')
         .join('events', 'events.org_id', '=', 'organizations.id')

@@ -32,7 +32,6 @@ async function checkEmail(email) {
 }
 
 async function signupUser({ first_name, last_name, email, password, city, state, zip, avatar }) {
-    console.log("function signupUser started")
     const acctExist = await checkEmail(email)
     const hashed = await hash(password)
 
@@ -61,12 +60,10 @@ async function signupUser({ first_name, last_name, email, password, city, state,
 }
 
 async function signupOrg({ email, password, name, aboutus, street_org, city_org, state_org, zip_org, logo, lat_org, long_org }) {
-    console.log("function signupOrg started")
     const acctExist = await checkEmail(email)
     console.log("I am acctExist from checkEmail(email)", acctExist)
     const hashed = await hash(password)
     if (acctExist === false) {
-        console.log("if block in signupOrg.")
         const org = {
             name,
             aboutus,
@@ -87,7 +84,6 @@ async function signupOrg({ email, password, name, aboutus, street_org, city_org,
             .then(([response]) => response)
             .catch(console.log)
     } else {
-        console.log("else block in signupOrg.")
         throw new Error("Bad Request. Failed to sign up")
     }
 }

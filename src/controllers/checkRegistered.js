@@ -8,12 +8,11 @@ const checkRegistered = async (req, res, next) => {
         const token = parseToken(req.headers.authorization)
         const user_id = token.sub.id
         const response = await model.checkRegistered(user_id, eventId)
-        console.log('response inside controller', response)
         res.status(200).json({
             isRegistered: response
         })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Failed to check if user is registered`

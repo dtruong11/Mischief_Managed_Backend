@@ -32,8 +32,6 @@ const joinTbs = (tableName) => {
 const registerEvent = async (userId, eventId, body) => {
   const eventFound = await find(userId, eventId)
   if (eventFound) {
-    console.log('userId', userId, eventFound)
-
     return db(tableName)
       .where({ id: eventFound.id })
       .update({
@@ -92,13 +90,11 @@ const populateAttendees = (attendeesArr, registration_id) => {
 
 const getRegisteredEvents = (userId) => {
   try {
-    console.log("YOOOO", userId)
     return joinTbs(tableName)
       .where({ registered: true, user_id: userId })
       .returning('*')
       .then(res => res)
   } catch (e) {
-    console.log("YOOO")
     console.error(e)
     Promise.reject(e)
   }
