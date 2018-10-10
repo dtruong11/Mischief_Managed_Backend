@@ -1,4 +1,6 @@
 const table = 'events'
+import pic1 from '../../assets/ginger.jpg'
+
 exports.seed = knex => {
   return knex(table).insert([{
     id: 1,
@@ -73,7 +75,7 @@ exports.seed = knex => {
     id: 4,
     title: 'Ginger Bread Man & Santa Clause house',
     description: "We will be making our own ginger bread man and building a house for Santa.",
-    image_url: 'https://i0.wp.com/lahabrajournal.com/wp-content/uploads/2013/12/gingerbread-man.jpg',
+    image_url: pic1,
     cost: 5,
     min_age: 2,
     max_age: 5,

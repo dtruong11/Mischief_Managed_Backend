@@ -13,22 +13,6 @@ const getAll = () => {
   // .then(res => res)
 }
 
-// const getOne = (eventTitle) => {
-//   let fixedTitle = eventTitle.split('-').join(' ')
-//   return joinTbs()
-//     .where({ title: fixedTitle })
-//     .first()
-//     .then(async (event) => {
-//       try {
-//         const reviews = await modelReview.getAll(event.id)
-//         event.reviews = reviews
-//         return event
-//       } catch (e) {
-//         console.error(e)
-//       }
-//     }
-//     )
-// }
 
 const getOne = (eventId) => {
   return joinTbs()
