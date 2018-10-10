@@ -16,7 +16,7 @@ exports.seed = knex => {
         id: 3,
         name: 'Rose',
         age: 4,
-        registration_id: 3
+        registration_id: 2
       }
       ])
         .then(() => {
