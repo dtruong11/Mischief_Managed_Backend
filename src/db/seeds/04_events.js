@@ -44,8 +44,8 @@ exports.seed = knex => {
     educational: true,
     nature: false,
     music: false,
-    start_date: '2018-09-25T10:00:00-07:00',
-    end_date: '2018-09-25T12:00:00-07:00',
+    start_date: '2018-10-25T10:00:00-07:00',
+    end_date: '2018-10-25T12:00:00-07:00',
     cancelled_at: null,
     org_id: 2
   }, {
@@ -67,8 +67,8 @@ exports.seed = knex => {
     educational: false,
     nature: false,
     music: false,
-    start_date: '2018-09-20T14:00:00-07:00',
-    end_date: '2018-09-20T16:00:00-07:00',
+    start_date: '2018-10-20T14:00:00-07:00',
+    end_date: '2018-10-20T16:00:00-07:00',
     cancelled_at: null,
     org_id: 3
   }, {
@@ -90,8 +90,8 @@ exports.seed = knex => {
     educational: false,
     nature: false,
     music: false,
-    start_date: '2018-09-20T14:00:00-07:00',
-    end_date: '2018-09-20T16:00:00-07:00',
+    start_date: '2018-10-28T14:00:00-07:00',
+    end_date: '2018-10-28T16:00:00-07:00',
     cancelled_at: null,
     org_id: 4
   },{
@@ -113,8 +113,8 @@ exports.seed = knex => {
     educational: false,
     nature: false,
     music: true,
-    start_date: '2018-10-20T14:00:00-07:00',
-    end_date: '2018-10-20T16:00:00-07:00',
+    start_date: '2018-10-21T14:00:00-07:00',
+    end_date: '2018-10-21T16:00:00-07:00',
     cancelled_at: null,
     org_id: 1
   }
