@@ -1,5 +1,6 @@
 const table = 'events'
-import pic1 from '../../assets/ginger.jpg'
+const pic1  = require('../../assets/ginger.jpg')
+
 
 exports.seed = knex => {
   return knex(table).insert([{
