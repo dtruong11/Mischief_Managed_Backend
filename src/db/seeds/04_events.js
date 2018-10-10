@@ -75,7 +75,7 @@ exports.seed = knex => {
     id: 4,
     title: 'Ginger Bread Man & Santa Clause house',
     description: "We will be making our own ginger bread man and building a house for Santa.",
-    image_url: "https://goo.gl/3j5ERU",
+    image_url: "https://cdn3.tmbi.com/toh/GoogleImages/EXPS_6834_CW0086C44B_RMS.jpg",
     cost: 5,
     min_age: 2,
     max_age: 5,
