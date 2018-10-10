@@ -1,5 +1,4 @@
 const table = 'events'
-const pic1  = require('../../assets/ginger.jpg')
 
 
 exports.seed = knex => {
@@ -76,7 +75,7 @@ exports.seed = knex => {
     id: 4,
     title: 'Ginger Bread Man & Santa Clause house',
     description: "We will be making our own ginger bread man and building a house for Santa.",
-    image_url: pic1,
+    image_url: "https://goo.gl/3j5ERU",
     cost: 5,
     min_age: 2,
     max_age: 5,
