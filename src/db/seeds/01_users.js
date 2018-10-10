@@ -13,7 +13,7 @@ exports.seed = knex => {
     city: 'Mercer Island',
     state: "Washington",
     zip: 98040,
-    avatar: 'https://goo.gl/KZGVvt'
+    avatar: 'https://goo.gl/Aje6Yv'
   }, {
     id: 2,
     first_name: 'Hermione',
