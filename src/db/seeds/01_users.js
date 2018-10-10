@@ -6,8 +6,8 @@ const table = 'users'
 exports.seed = knex => {
   return knex(table).insert([{
     id: 1,
-    first_name: "Harry",
-    last_name: "Potter",
+    first_name: "Diep",
+    last_name: "Truong",
     email: "student@galvanize.com",
     password: hashSync('password'),
     city: 'Mercer Island',
@@ -64,6 +64,16 @@ exports.seed = knex => {
     state: "Washington",
     zip: 98002,
     avatar: 'https://goo.gl/AciskH'
+  }, {
+    id: 7,
+    first_name: "Harry",
+    last_name: "Potter",
+    email: "harry@galvanize.com",
+    password: hashSync('password'),
+    city: 'Bellevue',
+    state: "Washington",
+    zip: 98004,
+    avatar: 'https://goo.gl/KZGVvt'
   }
   ]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
