@@ -68,7 +68,7 @@ exports.seed = knex => {
     id: 7,
     first_name: "Harry",
     last_name: "Potter",
-    email: "harry@galvanize.com",
+    email: "harry@potter.com",
     password: hashSync('password'),
     city: 'Bellevue',
     state: "Washington",
