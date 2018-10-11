@@ -45,7 +45,6 @@ const registerEvent = async (userId, eventId, body) => {
         return res
       })
       .catch(console.error)
-
   } else {
     return db(tableName)
       .insert({
@@ -58,7 +57,13 @@ const registerEvent = async (userId, eventId, body) => {
       .returning('*')
       .then(async ([res]) => {
         let registration_id = res.id
-        await populateAttendees(body.attendees, registration_id)
+        let attendees = await populateAttendees(body.attendees, registration_id)
+        if (attendees.length > 0) {
+          let children = attendees.map(el => {
+            return el[0]
+          })
+          res.attendees = children
+        }
         return res
       })
   }
@@ -67,25 +72,33 @@ const registerEvent = async (userId, eventId, body) => {
 // check if the attendess/ children aready exist : not double registering the same child 
 
 const checkifKidAttended = (registration_id, name, age) => {
-  return db('attendees').where({
-    registration_id,
-    name: name,
-    age: age
-  }).first()
+  return db('attendees')
+    .where({
+      registration_id,
+      name: name,
+      age: age
+    }).first()
 }
 
 const populateAttendees = (attendeesArr, registration_id) => {
-  attendeesArr.map(async (el) => {
+  console.log('attendeesArr', attendeesArr)
+
+  const promises = attendeesArr.map(async (el) => {
     const kidFound = await checkifKidAttended(registration_id, el.name, el.age)
+    console.log('kidFound', kidFound)
     if (!kidFound) {
-      db('attendees')
+      return db('attendees')
         .insert({
           registration_id,
           name: el.name,
           age: el.age
         })
+        .returning('*')
     }
   })
+
+  return Promise.all(promises) // this is a promise returning. .then, an array of result
+
 }
 
 const getRegisteredEvents = (userId) => {

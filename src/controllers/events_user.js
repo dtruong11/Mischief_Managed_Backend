@@ -52,9 +52,7 @@ const registerEvent = async (req, res, next) => {
     try {
         const token = parseToken(req.headers.authorization)
         const user_id = token.sub.id
-
         const response = await model.registerEvent(user_id, req.params.eventId, req.body)
-        
         res.status(200).json({
             [resourceName]: response
         })
