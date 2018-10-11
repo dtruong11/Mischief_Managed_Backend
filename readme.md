@@ -1,13 +1,13 @@
 # MISCHIEF MANAGED (BACKEND)
 
-This is the backend of my Galvanize capstone project Mischief Managed. 
+* This is the backend of my Galvanize capstone project Mischief Managed. 
 The frontend can be found at: https://github.com/dtruong11/Mischief_Managed_frontend
 
-Mischief Managed (M & M) is a web application that takes away the stress of finding the right activities for parents and families. Parents can filter activities based on location, distance, cost,event type and age range. Parents can also view an interactive map of their search results. If parents are interested in any events, they can login to register and leave reviews. 
+* Mischief Managed (M & M) is a web application that takes away the stress of finding the right activities for parents and families. Parents can filter activities based on location, distance, cost,event type and age range. Parents can also view an interactive map of their search results. If parents are interested in any events, they can login to register and leave reviews. 
 
 ![](./MM1.gif)
 
-Mischief Managed is also for organizers who would like to create events and share them with parents in the community. From the orgnization page, organizers can view their events, who signed up, and reviews from families. 
+* Mischief Managed is also for organizers who would like to create events and share them with parents in the community. From the orgnization page, organizers can view their events, who signed up, and reviews from families. 
 
 ### Installing
 
@@ -40,7 +40,7 @@ Finally, start the server in development mode:
 * npm run dev
 ```
 
-## Deployment
+### Deployment
 
 The backend of this project has been deployed on Heroku at the address: https://capstonebackmischief.herokuapp.com
 
