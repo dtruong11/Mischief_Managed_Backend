@@ -24,7 +24,7 @@ const joinTbs = (tableName) => {
 
 
 /////////////////////////////
-// events registration 
+// events registration /////
 ////////////////////////////
 
 // A user registers for an event 
@@ -81,11 +81,9 @@ const checkifKidAttended = (registration_id, name, age) => {
 }
 
 const populateAttendees = (attendeesArr, registration_id) => {
-  console.log('attendeesArr', attendeesArr)
 
   const promises = attendeesArr.map(async (el) => {
     const kidFound = await checkifKidAttended(registration_id, el.name, el.age)
-    console.log('kidFound', kidFound)
     if (!kidFound) {
       return db('attendees')
         .insert({
@@ -163,7 +161,6 @@ const favEvent = async (userId, eventId) => {
 
 // Retrieve all favorite events = GET ALL 
 const getFavorites = (userId) => {
-  console.log("getFavorites", userId)
   return joinTbs(tableName)
     .where({ user_id: userId, favorite: true })
     .returning('*')

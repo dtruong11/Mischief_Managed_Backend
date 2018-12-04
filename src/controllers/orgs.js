@@ -27,12 +27,8 @@ const getEventsByOrg = async (req, res, next) => {
     try {
         const token = parseToken(req.headers.authorization)
         const orgID = token.sub.id
-
-        console.log('this token from front-end', token)
-        console.log('orgID parsed from token', orgID)
         let data = await model.getEventsByOrg(orgID)
 
-        // let data = await model.getEventsByOrg(req.params.orgId)
         res.send({
             data
         })
@@ -43,7 +39,6 @@ const getEventsByOrg = async (req, res, next) => {
 
 const createEvent = async (req, res, next) => {
     try {
-        console.log(req.body)
         const token = parseToken(req.headers.authorization)
         
         const orgId = token.sub.id

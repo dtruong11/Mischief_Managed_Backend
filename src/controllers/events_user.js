@@ -93,7 +93,6 @@ const unLikeEvent = async (req, res, next) => {
 // get all 
 const getFavorites = async (req, res, next) => {
     try {
-        console.log("req.params.userId", req.params.userId)
         const response = await model.getFavorites(req.params.userId)
         res.json({
             [plural(resourceName)]: response

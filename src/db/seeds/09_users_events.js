@@ -25,7 +25,6 @@ exports.seed = knex => {
         favorite: true,
         registered: false,
         notes: ''
-
       }
       ])
         .then(() => {

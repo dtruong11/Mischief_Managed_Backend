@@ -9,7 +9,6 @@ async function hash(password) {
 
 // Check if account already exists 
 async function checkEmail(email) {
-    console.log('this is email', email)
     const accountUser = await db('users')
         .where({
             email
@@ -24,7 +23,6 @@ async function checkEmail(email) {
         .first()
         .catch(console.log)
 
-    console.log("I am accountUser", accountUser, "I am accountOrg", accountOrg)
     if (!accountUser && !accountOrg) {
         return false
     }

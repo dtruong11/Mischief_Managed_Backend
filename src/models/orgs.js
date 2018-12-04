@@ -66,7 +66,6 @@ const getRegisteredParents = (eventId) => {
             if (res.length > 0) {
                 const result = res.map(async (el) => {
                     const children = await getAttending(el.user_id)
-                    console.log('children in getRegisteredParents', children)
                     el.attendingChildren = children
                     return el
                 })
