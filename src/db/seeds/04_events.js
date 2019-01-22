@@ -27,7 +27,7 @@ exports.seed = knex => {
     org_id: 1
   }, {
     id: 2,
-    title: 'The Hungry Catepillar',
+    title: 'Issac & Olly',
     description: "We will read many fun books.",
     image_url: 'https://snag.gy/LD8mYk.jpg',
     cost: 0,
@@ -44,8 +44,8 @@ exports.seed = knex => {
     educational: true,
     nature: false,
     music: false,
-    start_date: '2019-3-27T10:00:00-07:00',
-    end_date: '2019-3-27T12:00:00-07:00',
+    start_date: '2019-3-2T07:00:00-07:00',
+    end_date: '2019-3-2T09:00:00-07:00',
     cancelled_at: null,
     org_id: 2
   }, {
@@ -120,7 +120,7 @@ exports.seed = knex => {
   },
   {
     id: 6,
-    title: 'Freestyle Paining & Fun Music',
+    title: 'Freestyle Painting & Fun Music',
     description: "We will paint trees and forest. In the meantime, we will also listen to our favorite tunes.",
     image_url: 'https://snag.gy/DWVp8s.jpg',
     cost: 0,
