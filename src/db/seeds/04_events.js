@@ -44,8 +44,8 @@ exports.seed = knex => {
     educational: true,
     nature: false,
     music: false,
-    start_date: '2019-3-2T07:00:00-07:00',
-    end_date: '2019-3-2T09:00:00-07:00',
+    start_date: '2019-3-2T08:00:00-07:00',
+    end_date: '2019-3-2T10:00:00-07:00',
     cancelled_at: null,
     org_id: 2
   }, {
@@ -90,8 +90,8 @@ exports.seed = knex => {
     educational: false,
     nature: false,
     music: false,
-    start_date: '2018-12-23T14:00:00-07:00',
-    end_date: '2018-12-23T16:00:00-07:00',
+    start_date: '2019-5-2T14:00:00-07:00',
+    end_date: '2019-5-2T16:00:00-07:00',
     cancelled_at: null,
     org_id: 4
   },{
