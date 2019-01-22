@@ -15,7 +15,7 @@ const getAll = () => {
 
 const getOne = (eventId) => {
   return joinTbs()
-    .where('events.id', eventId )
+    .where('events.id', eventId)
     .first()
     .then(async (event) => {
       try {
@@ -51,7 +51,9 @@ const getFiltered = async (query) => {
 
   // step 3: filter boolean values (sport, art, educational, music, nature)
   for (key in input) {
-    if (key) allEvents = allEvents.andWhere(key, true)
+    if (key) {
+      allEvents = allEvents.orWhere(key, true)
+    }
   }
 
   // step 4: filter by age
@@ -84,9 +86,6 @@ const filterByAge = (filteredEvents, query) => {
       else {
         return true
       }
-      // if (event.min_age <= min_user_age && event.max_age >= max_user_age) return true
-      // else if (event.max_age <= max_user_age && event.min_age >= min_user_age) return true
-      // else return false
     })
   }
   return filteredEvents
@@ -110,9 +109,15 @@ const filterByTimeOfDay = (filteredEvents, query) => {
 
   if (query.morning || query.afternoon || query.evening) {
     filteredEvents = filteredEvents.filter(event => {
-      let arr = [getAMPM(event.start_date), getAMPM(event.end_date)]
+      let start = getAMPM(event.start_date)
+      let end = getAMPM(event.end_date)
+      let arr = [start, end]
       for (let key in input) {
-        if (arr.includes(key)) return true
+        if (arr.includes(key)) {
+          console.log(event.title, arr)
+          return true
+        }
+        else return false
       }
     })
   }
@@ -136,6 +141,7 @@ const getAMPM = (str) => {
   let split_afternoon = 12
   let split_evening = 17
   let hour = moment(str).format("HH")
+  // console.log('time', moment(str).format("MM-DD-YYYY hh:mm A"))
 
   if (hour > split_afternoon && hour <= split_evening) {
     return 'afternoon'
