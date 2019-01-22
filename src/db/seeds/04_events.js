@@ -75,7 +75,7 @@ exports.seed = knex => {
     id: 4,
     title: 'Aerobic Time',
     description: "We will do some light stretching. Then, we will do some fun aerobic together as a group.",
-    image_url: "https://snag.gy/8PRZwU.jpg",
+    image_url: "https://snag.gy/uE2wXP.jpg",
     cost: 15,
     min_age: 2,
     max_age: 5,
